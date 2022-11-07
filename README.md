@@ -1,5 +1,7 @@
 # Ashera - Tasks and notes
 
+https://mmv-ashera.netlify.app/
+
 ---
 
 # Installation
