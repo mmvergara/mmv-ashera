@@ -13,9 +13,8 @@ import {
 } from "firebase/firestore";
 import { firebaseInitializeConfig } from "../Config";
 
-
 import { noteDetail, noteNoId } from "../types/NoteTypes";
-const firebaseConfig = firebaseInitializeConfig
+const firebaseConfig = firebaseInitializeConfig;
 
 //Firebase App Initialize
 

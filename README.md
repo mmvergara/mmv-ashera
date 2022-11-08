@@ -11,9 +11,9 @@ https://mmv-ashera.netlify.app/
 - Go to ./src/Config
 - Change `firebaseInitializeConfig` to your own Firebase DB
 
-### Firebase Security Rules
+### Cloud Firestore Rules
 
-```
+```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
