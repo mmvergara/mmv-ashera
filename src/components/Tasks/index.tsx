@@ -41,13 +41,9 @@ const TaskContainer: React.FC = () => {
     <>
       <AllTasksSectionContainer>
         {allTaskSection.map((task) => {
+          const { id, taskSectionName, tasks } = task;
           return (
-            <TaskSection
-              key={task.id}
-              sectionId={task.id}
-              taskSectionName={task.taskSectionName}
-              tasks={task.tasks}
-            />
+            <TaskSection key={id} sectionId={id} taskSectionName={taskSectionName} tasks={tasks} />
           );
         })}
 

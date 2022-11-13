@@ -33,6 +33,14 @@ const HomePage: React.FC = () => {
                   lightweight app that can manage your tasks and notes, yep That's it!
                 </Text>
                 <Button onClick={() => toggleSignin(true)}>Get Started</Button>
+                <a
+                  href='https://mmv-docs.vercel.app/'
+                  style={{ width: "100%", textAlign: "center" }}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <Button style={{ width: "100%" }}>Developer Docs</Button>
+                </a>
               </Stack>
             </Box>
           </Container>

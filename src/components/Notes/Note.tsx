@@ -16,15 +16,17 @@ const Note: React.FC<NoteProps> = ({ noteDetails }) => {
   const deleteNoteHandler = async () => deleteNote(noteDetails.noteId);
   const closeModalHandler = () => setEditModalOn(false);
   const openModalHandler = () => setEditModalOn(true);
+
+  const { noteContent, noteId, noteTitle } = noteDetails;
   return (
     <>
       {editModalOn && (
         <ModalNoteForm
           closeModalHandler={closeModalHandler}
           isOpen={editModalOn}
-          noteContent={noteDetails.noteContent}
-          noteTitle={noteDetails.noteTitle}
-          noteId={noteDetails.noteId}
+          noteContent={noteContent}
+          noteTitle={noteTitle}
+          noteId={noteId}
         />
       )}
       <Box bg='purple.900' minW='300px' maxW='300px' p={4} color='white'>
@@ -57,7 +59,7 @@ const Note: React.FC<NoteProps> = ({ noteDetails }) => {
           </span>
         </h5>
         <Divider margin='1em 0em' />
-        <p>{noteDetails.noteContent}</p>
+        <p>{noteContent}</p>
       </Box>
     </>
   );

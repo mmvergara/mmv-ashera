@@ -57,17 +57,13 @@ const ModalNoteForm: React.FC<ModalNoteProps> = ({
           </h2>
           <Divider style={{ margin: "0.4em 0em", color: "red" }} />
           <Input
-            onChange={(e) => {
-              setTitle(e.target.value!);
-            }}
+            onChange={(e) => setTitle(e.target.value!)}
             style={{ margin: "0.4em 0em", borderWidth: "2px" }}
             placeholder='Note Title'
             value={title}
           />
           <Textarea
-            onChange={(e) => {
-              setContent(e.target.value!);
-            }}
+            onChange={(e) => setContent(e.target.value!)}
             style={{ margin: "0.4em 0em", borderWidth: "2px" }}
             placeholder='Note Content'
             value={content}

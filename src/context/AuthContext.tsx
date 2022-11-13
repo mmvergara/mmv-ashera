@@ -4,7 +4,6 @@ import { authFB } from "../firebase";
 
 const AuthContext = createContext<User | null>(null);
 export const useAuth = () => useContext(AuthContext);
-
 export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null!);
