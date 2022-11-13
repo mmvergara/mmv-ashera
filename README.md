@@ -1,6 +1,6 @@
 # Ashera - Tasks and notes
 
-https://mmv-ashera.netlify.app/
+https://mmv-ashera.vercel.app/
 
 ---
 
