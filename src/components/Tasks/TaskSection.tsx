@@ -17,12 +17,13 @@ const TaskSection: React.FC<TaskSectionProps> = ({ sectionId, taskSectionName, t
   const [valTaskSection, setValTaskSection] = useState("");
   const newTaskSectionRef = useRef<HTMLInputElement | null>(null!);
   const toast = useToast();
-  
+
   let allTasks: string[] = tasks || [];
   const newTaskHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!valTaskSection || valTaskSection.trim().length === 0) return;
     await addTask(sectionId, valTaskSection);
+    setValTaskSection('')
     newTaskSectionRef.current?.focus();
   };
   const deleteSectionHandler = async () => {
