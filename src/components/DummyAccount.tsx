@@ -3,7 +3,6 @@ import { useState } from "react";
 const DummyAccount: React.FC = () => {
   const [accIsShown, setAccIsShown] = useState(false);
   const showDummyAcc = () => setAccIsShown((prev) => !prev);
-
   return (
     <>
       {accIsShown ? (
