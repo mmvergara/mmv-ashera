@@ -1,11 +1,10 @@
 # Ashera - Tasks and notes
-
-https://mmv-ashera.vercel.app/
+- Release Date: November 6, 2022
+- https://mmv-ashera.vercel.app/
 
 ---
 
 # Installation
-
 ## Setup Firebase
 
 - Go to ./src/Config
