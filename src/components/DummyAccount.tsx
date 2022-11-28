@@ -12,7 +12,7 @@ const DummyAccount: React.FC = () => {
         </p>
       ) : (
         <p style={{ padding: "1em", cursor: "pointer" }} onClick={showDummyAcc}>
-          Dummy Accounts here
+          Dummy Account here
         </p>
       )}
     </>
