@@ -17,6 +17,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element
       setLoading(false);
     });
   }, [user]);
+  console.log(loading);
 
-  return <AuthContext.Provider value={user}>{!loading && children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={user}>{!loading ? children : "LOADING..."}</AuthContext.Provider>
+  );
 };

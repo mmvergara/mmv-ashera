@@ -1,6 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import { onSnapshot, query, where } from "firebase/firestore";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { addNewTaskSection, taskSectionRef } from "../../firebase";
 import { AllTasksSectionContainer, TasksMainContainer } from "../../styles/StyledComponents";
@@ -10,14 +10,14 @@ import TaskSection from "./TaskSection";
 
 const TaskContainer: React.FC = () => {
   const auth = useAuth();
-  const taskSectionNameInpRef = useRef<HTMLInputElement | null>(null!);
+  const [newTaskSecVal, setNewTaskSecVal] = useState("");
   const [allTaskSection, setAllTaskSection] = useState<TS[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const addNewTaskSectionHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const sectionName = taskSectionNameInpRef.current?.value;
-    if (!sectionName || sectionName.trim().length === 0) return;
-    await addNewTaskSection(sectionName);
+    if (!newTaskSecVal || newTaskSecVal.trim().length === 0) return;
+    await addNewTaskSection(newTaskSecVal);
+    setNewTaskSecVal("");
     return;
   };
 
@@ -32,7 +32,12 @@ const TaskContainer: React.FC = () => {
         sections.push({ ...section, id: s.id });
       });
       setIsLoading(false);
-      setAllTaskSection(sections.sort((a, b) => a.createdAt.seconds - b.createdAt.seconds));
+
+      setAllTaskSection(
+        sections.sort((a, b) => {
+          return a.createdAt.seconds - b.createdAt.seconds;
+        })
+      );
     });
   }, [auth]);
 
@@ -49,7 +54,12 @@ const TaskContainer: React.FC = () => {
 
         <TasksMainContainer>
           <form onSubmit={addNewTaskSectionHandler}>
-            <Input ref={taskSectionNameInpRef} placeholder='Task Section Name' mb='2' />
+            <Input
+              value={newTaskSecVal}
+              onChange={(e) => setNewTaskSecVal(e.target.value)}
+              placeholder='Task Section Name'
+              mb='2'
+            />
             <Button type='submit' style={{ width: "100%" }}>
               Add New Task Section
             </Button>
