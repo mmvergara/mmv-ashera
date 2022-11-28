@@ -15,6 +15,7 @@ import { Alert, AlertIcon, Spinner, Button, Divider, Input, useToast } from "@ch
 import useCurTheme from "../../hooks/useCurTheme";
 import SignupDrawer from "./SignupDrawer";
 import useStatusText from "../../hooks/useStatusText";
+import DummyAccount from "../DummyAccount";
 
 type SidenavProps = {
   toggleSignin: (action?: boolean) => void;
@@ -143,6 +144,7 @@ const SigninDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignin }) => {
                 {status.statusText}
               </Alert>
             )}
+            <DummyAccount/>
           </DrawerBody>
           <DrawerFooter>Made by: Vergara, Mark Matthew</DrawerFooter>
         </DrawerContent>
