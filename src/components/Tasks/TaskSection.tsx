@@ -19,10 +19,14 @@ const TaskSection: React.FC<TaskSectionProps> = ({ sectionId, taskSectionName, t
   let allTasks: string[] = tasks || [];
   const newTaskHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!newTaskRef.current) return;
     const newTask = newTaskRef.current?.value;
     if (!newTask || newTask.trim().length === 0) return;
     await addTask(sectionId, newTask);
     newTaskRef.current?.focus();
+
+    // A bit janky!!!
+    newTaskRef.current.value = "";
     return;
   };
   const deleteSectionHandler = async () => {
