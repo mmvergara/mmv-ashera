@@ -3,7 +3,7 @@ import useCurTheme from "../../hooks/useCurTheme";
 import styled from "@emotion/styled";
 import Task from "./Task";
 import { nanoid } from "nanoid";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { IconButton, Input, useToast } from "@chakra-ui/react";
 import { addTask, deleteTaskSection } from "../../firebase";
 import { DeleteIcon } from "@chakra-ui/icons";
@@ -14,20 +14,16 @@ interface TaskSectionProps {
 }
 const TaskSection: React.FC<TaskSectionProps> = ({ sectionId, taskSectionName, tasks }) => {
   const { isDarkMode } = useCurTheme();
-  const newTaskRef = useRef<HTMLInputElement | null>(null!);
+  const [valTaskSection, setValTaskSection] = useState("");
+  const newTaskSectionRef = useRef<HTMLInputElement | null>(null!);
   const toast = useToast();
+  
   let allTasks: string[] = tasks || [];
   const newTaskHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!newTaskRef.current) return;
-    const newTask = newTaskRef.current?.value;
-    if (!newTask || newTask.trim().length === 0) return;
-    await addTask(sectionId, newTask);
-    newTaskRef.current?.focus();
-
-    // A bit janky!!!
-    newTaskRef.current.value = "";
-    return;
+    if (!valTaskSection || valTaskSection.trim().length === 0) return;
+    await addTask(sectionId, valTaskSection);
+    newTaskSectionRef.current?.focus();
   };
   const deleteSectionHandler = async () => {
     await deleteTaskSection(sectionId);
@@ -71,7 +67,14 @@ const TaskSection: React.FC<TaskSectionProps> = ({ sectionId, taskSectionName, t
           return <Task key={nanoid()} taskName={t} sectionId={sectionId} />;
         })}
         <form onSubmit={newTaskHandler}>
-          <Input ref={newTaskRef} style={{ width: "95%" }} placeholder='Add New Task' mb='2' />
+          <Input
+            ref={newTaskSectionRef}
+            value={valTaskSection}
+            onChange={(e) => setValTaskSection(e.target.value)}
+            style={{ width: "95%" }}
+            placeholder='Add New Task'
+            mb='2'
+          />
         </form>
       </AllTaskContainer>
     </TasksMainContainer>
