@@ -82,12 +82,9 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
     <>
       <Drawer isOpen={isOpen} placement='right' size='sm' onClose={handleClose} colorScheme='gray'>
         <DrawerOverlay />
-
         <DrawerContent backgroundColor={isDarkMode ? "#1a202c" : "white"}>
           <DrawerHeader style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ marginRight: "auto", color: isDarkMode ? "white" : "purple" }}>
-              Create Account | Ashera
-            </span>
+            <span style={{ marginRight: "auto", color: isDarkMode ? "white" : "purple" }}>Create Account | Ashera</span>
             <Button
               variant='solid'
               onClick={handleClose}
@@ -99,9 +96,7 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
           <DrawerBody>
             <Divider />
             <form onSubmit={formik.handleSubmit}>
-              <p style={ErrorParagraphStyle}>
-                {formik.touched.SignUpUsername && formik.errors.SignUpUsername}
-              </p>
+              <p style={ErrorParagraphStyle}>{formik.touched.SignUpUsername && formik.errors.SignUpUsername}</p>
               <Input
                 placeholder='Username'
                 type='text'
@@ -113,9 +108,7 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
-              <p style={ErrorParagraphStyle}>
-                {formik.touched.SignUpEmail && formik.errors.SignUpEmail}
-              </p>
+              <p style={ErrorParagraphStyle}>{formik.touched.SignUpEmail && formik.errors.SignUpEmail}</p>
               <Input
                 placeholder='Email'
                 id='SignUpEmail'
@@ -126,9 +119,7 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
-              <p style={ErrorParagraphStyle}>
-                {formik.touched.SignUpPassword && formik.errors.SignUpPassword}
-              </p>
+              <p style={ErrorParagraphStyle}>{formik.touched.SignUpPassword && formik.errors.SignUpPassword}</p>
               <Input
                 placeholder='Password'
                 type='password'
@@ -153,12 +144,7 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
                 Create Account
               </Button>
             </form>
-            <Button
-              variant='outline'
-              width='100%'
-              mt={is800pxBigger ? "6" : "4"}
-              onClick={handleClose}
-            >
+            <Button variant='outline' width='100%' mt={is800pxBigger ? "6" : "4"} onClick={handleClose}>
               I Already have an account
             </Button>
             {status.isShown && (
@@ -171,9 +157,7 @@ const SignupDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignup }) => {
             {error.hasError && (
               <Alert
                 status={
-                  error.errorText.includes("The Account was created but the username was not set")
-                    ? "warning"
-                    : "error"
+                  error.errorText.includes("The Account was created but the username was not set") ? "warning" : "error"
                 }
                 variant='top-accent'
                 mt={4}

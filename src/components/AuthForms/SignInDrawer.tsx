@@ -74,7 +74,7 @@ const SigninDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignin }) => {
       <SignupDrawer isOpen={showSignup} toggleSignup={toggleSignUp} />
       <Drawer isOpen={isOpen} placement='right' size='sm' onClose={handleClose} colorScheme='gray'>
         <DrawerOverlay />
-        <DrawerContent backgroundColor={isDarkMode ? "#1a202c" : "white"}>
+        <DrawerContent maxW='200px' backgroundColor={isDarkMode ? "#1a202c" : "white"}>
           <DrawerHeader style={{ display: "flex", alignItems: "center" }}>
             <span style={{ marginRight: "auto", color: isDarkMode ? "white" : "purple" }}>
               Sign in | Ashera
@@ -144,7 +144,7 @@ const SigninDrawer: React.FC<SidenavProps> = ({ isOpen, toggleSignin }) => {
                 {status.statusText}
               </Alert>
             )}
-            <DummyAccount/>
+            <DummyAccount />
           </DrawerBody>
           <DrawerFooter>Made by: Vergara, Mark Matthew</DrawerFooter>
         </DrawerContent>

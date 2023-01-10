@@ -16,6 +16,7 @@ export const SignUP_ValSchema = yup.object({
     .trim()
     .required("Username field is required."),
 });
+
 export const SignIN_ValSchema = yup.object({
   SignInEmail: emailValidation,
   SignInPassword: passwordValidation,

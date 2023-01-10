@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null!);
   useEffect(() => {
+    console.log('USEEFFCCT')
     authFB.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
